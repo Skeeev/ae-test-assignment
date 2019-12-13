@@ -1,0 +1,17 @@
+.textZone {
+  background-color: #f1f0f0;
+  display: flex;
+  flex: {
+    direction: column;
+    grow: 1;
+  }
+  align-items: center;
+  padding: 5px;
+}
+
+.text {
+  width: 600px;
+  flex-grow: 1;
+  background-color: #fff;
+  border: 1px solid #e4dede;
+}

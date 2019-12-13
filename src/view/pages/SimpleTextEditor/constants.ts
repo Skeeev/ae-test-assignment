@@ -1,0 +1,3 @@
+export const SELECTED_WORDS_LIMIT = 1;
+
+export const SELECTION_EVENTS_DEBOUNCE_MS = 300;

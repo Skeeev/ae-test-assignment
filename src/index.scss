@@ -1,0 +1,18 @@
+@import "assets/styles/normalize";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font: {
+    size: 14px;
+    family: sans-serif;
+  }
+}
+
+#root {
+  height: 100%;
+}

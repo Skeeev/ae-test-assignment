@@ -1,0 +1,11 @@
+@import "src/assets/styles/variables/colors";
+
+.container {
+  padding: 20px;
+  border: 1px solid $gray;
+  background: $white;
+}
+
+.content {
+  margin-top: 20px;
+}

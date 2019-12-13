@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.header {
+  display: block;
+  height: 40px;
+  padding: {
+    top: 15px;
+    left: 15px;
+  }
+  font-size: 24px;
+  border-bottom: 4px solid #ffa500;
+  background-color: rgba(33, 33, 33, 0.5);
+  color: #fff;
+}
+
+.main {
+  display: flex;
+  flex: {
+    direction: column;
+    grow: 1;
+  }
+}
+
+.heading {
+  margin: 0;
+  font-size: 1em;
+}
+
+.synonymsList {
+  max-height: 200px;
+  overflow-y: auto;
+}
