@@ -1,18 +1,27 @@
 import React, { FunctionComponent, memo } from 'react';
 import ContentEditable from 'react-contenteditable';
+import classNames from 'classnames';
 
 import { Props } from './types';
 import styles from './TextZone.module.scss';
 
 export const TextZone: FunctionComponent<Props> = memo(
-  ({ innerRef, content, disabled, onContentChange, onContentBlur }: Props) => (
-    <div className={styles.textZone}>
+  ({
+    innerRef,
+    content,
+    disabled,
+    containerClassName,
+    className,
+    onContentChange,
+    onContentBlur
+  }: Props) => (
+    <div className={classNames(styles.container, containerClassName)}>
       <ContentEditable
-        innerRef={innerRef}
         tagName="pre"
         html={content}
         disabled={disabled}
-        className={styles.text}
+        innerRef={innerRef}
+        className={classNames(styles.text, className)}
         onChange={onContentChange}
         onBlur={onContentBlur}
       />
@@ -21,3 +30,5 @@ export const TextZone: FunctionComponent<Props> = memo(
 );
 
 TextZone.displayName = 'TextZone';
+
+export default TextZone;

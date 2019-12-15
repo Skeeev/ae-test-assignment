@@ -1,24 +1,22 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Suspense, lazy } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { ROUTES } from 'constants/routesPaths';
-import synonymsConnector from 'view/connectors/synonyms';
-import { SimpleTextEditor } from 'view/pages/SimpleTextEditor';
-import { NotFound } from 'view/pages/NotFound';
+import { Loader } from 'view/components/Loader';
 
-const SimpleTextEditorWithSynonyms = synonymsConnector(SimpleTextEditor);
+const SimpleTextEditor = lazy(() => import('view/pages/SimpleTextEditor'));
+const NotFound = lazy(() => import('view/pages/NotFound'));
 
 export const Routes: FunctionComponent = () => (
-  <Switch>
-    <Redirect exact from={ROUTES.root} to={ROUTES.simpleTextEditor} />
+  <Suspense fallback={<Loader />}>
+    <Switch>
+      <Redirect exact from={ROUTES.root} to={ROUTES.simpleTextEditor} />
 
-    <Route
-      path={ROUTES.simpleTextEditor}
-      component={SimpleTextEditorWithSynonyms}
-    />
+      <Route path={ROUTES.simpleTextEditor} component={SimpleTextEditor} />
 
-    <Route component={NotFound} />
-  </Switch>
+      <Route component={NotFound} />
+    </Switch>
+  </Suspense>
 );
 
 Routes.displayName = 'Routes';

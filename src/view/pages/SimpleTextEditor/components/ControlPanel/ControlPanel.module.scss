@@ -1,5 +1,26 @@
+@import "src/assets/styles/variables/colors";
+
 .controlPanel {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.controlButton {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  margin-right: 5px;
+  background-color: transparent;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $seashell;
+  }
 }

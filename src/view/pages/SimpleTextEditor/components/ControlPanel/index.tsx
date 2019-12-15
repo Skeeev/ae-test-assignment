@@ -1,40 +1,45 @@
-import React, { PureComponent, MouseEvent, ReactNode } from 'react';
+import React, { memo, MouseEvent, FunctionComponent } from 'react';
+import classNames from 'classnames';
 
 import { Props } from './types';
 import { EditorFormatter } from 'view/pages/SimpleTextEditor/types';
 import styles from './ControlPanel.module.scss';
 
-export class ControlPanel extends PureComponent<Props, {}> {
-  toggleFormatter = (formatterName: string): void => {
-    document.execCommand(formatterName, false);
-  };
+const toggleFormatter = (formatterName: string): void => {
+  document.execCommand(formatterName, false);
+};
 
-  handleFormatterToggle = (event: MouseEvent, formatterName: string): void => {
-    event.preventDefault();
+const handleFormatterToggle = (
+  event: MouseEvent,
+  formatterName: string
+): void => {
+  event.preventDefault();
 
-    this.toggleFormatter(formatterName);
-  };
+  toggleFormatter(formatterName);
+};
 
-  render(): ReactNode {
-    const { formatters, children } = this.props;
-
-    return (
-      <div className={styles.controlPanel}>
-        <div>
-          {formatters.map(({ name, label }: EditorFormatter) => (
-            <button
-              key={name}
-              type="button"
-              onMouseDown={(event: MouseEvent) =>
-                this.handleFormatterToggle(event, name)
-              }
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        {children}
+export const ControlPanel: FunctionComponent<Props> = memo(
+  ({ formatters, className, children }: Props) => (
+    <div className={classNames(styles.controlPanel, className)}>
+      <div>
+        {formatters.map(({ name, label }: EditorFormatter) => (
+          <button
+            key={name}
+            type="button"
+            className={styles.controlButton}
+            onMouseDown={(event: MouseEvent) =>
+              handleFormatterToggle(event, name)
+            }
+          >
+            {label}
+          </button>
+        ))}
       </div>
-    );
-  }
-}
+      {children}
+    </div>
+  )
+);
+
+ControlPanel.displayName = 'ControlPanel';
+
+export default ControlPanel;

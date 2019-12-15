@@ -42,6 +42,7 @@
     "no-magic-numbers": [
       true,
       {
+        "allowed-numbers": [-1, 0, 1],
         "ignore-jsx": true
       }
     ],

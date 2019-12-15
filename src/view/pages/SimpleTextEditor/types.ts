@@ -4,9 +4,9 @@ import { SynonymsConnectedProps } from 'view/connectors/synonyms';
 export type Props = SynonymsConnectedProps;
 
 export type State = {
-  htmlContent: string;
+  editorHtmlContent: string;
   isEditorActive: boolean;
-  showPopover: boolean;
+  showSelectionPopover: boolean;
 };
 
 export enum FormatterType {

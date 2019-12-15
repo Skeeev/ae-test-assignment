@@ -10,3 +10,5 @@ export const Heading: FunctionComponent<Props> = ({
 }: Props) => createElement(`h${level}`, props, children);
 
 Heading.displayName = 'Heading';
+
+export default Heading;

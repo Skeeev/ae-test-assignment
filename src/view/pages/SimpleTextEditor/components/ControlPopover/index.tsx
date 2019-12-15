@@ -21,3 +21,5 @@ export const ControlPopover: FunctionComponent<Props> = ({
 };
 
 ControlPopover.displayName = 'ControlPopover';
+
+export default ControlPopover;
